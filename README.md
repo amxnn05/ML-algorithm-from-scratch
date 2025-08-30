@@ -21,7 +21,7 @@
 ## 📌 Overview
 This repository contains implementations of popular **Machine Learning algorithms from scratch**. The goal is to deeply understand how these algorithms work under the hood by coding them without using ML libraries like Scikit-learn or TensorFlow.
 
-NOTE- The libraries like Scikit-learn and more are only used for comparision purposes.
+> **Note:** The libraries like Scikit-learn and more are only used for comparision purposes.
 
 ---
 
@@ -53,7 +53,7 @@ git clone https://github.com/amxnn05/ML-algorithm-from-scratch.git
 cd ML-algorithm-from-scratch
 
 # install requirements.txt
-pip install -r requirnment.txt
+pip install -r requirements.txt
 ```
 
 ---

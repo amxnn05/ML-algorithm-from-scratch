@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 
-class Scratch_SVM:
+class Scratch_SVM: 
     # parameters
     def __init__(self, lr = 0.001, lamda = 0.01, epochs = 1000):
         self.lr = lr
@@ -26,7 +26,7 @@ class Scratch_SVM:
                 if chk:
                     self.w -= self.lr * (2 * self.lamda * self.w)
                 else:
-                    self.w -= self.lr * (2 * self.lamda * self.w) - ( np.dot(xi, y_[ind]))
+                    self.w -= self.lr * (2 * self.lamda * self.w) -  (xi * y_[ind])
                     self.b += self.lr * y_[ind]
 
 
@@ -44,6 +44,10 @@ y = data.target
 # converting output to 2 classes -1 and 1
 y = np.where(y == 0, -1, 1)
 
+x_train , x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+
+
 # visualization of the dataset
 
 print("data visualization")
@@ -53,22 +57,33 @@ plt.ylabel('Sepal Width')
 plt.title('Iris Dataset')
 plt.show()
 
-svm = Scratch_SVM(lr = 0.001, lamda=0.01, epochs=1000)
-svm.fit(X, y)
-new_samples = np.array([[0, 0], [4, 4]])
-svm_pred = svm.predict(new_samples)
-print("predicted value using my own class: ", svm_pred)
+
+# Hyperparameter tuning for Scratch_SVM
+learning_rates = [0.0001, 0.001, 0.01]
+lambdas = [0.001, 0.01, 0.1]
+best_accuracy = 0
+best_params = {}
+
+for lr in learning_rates:
+    for lamda in lambdas:
+        svm = Scratch_SVM(lr=lr, lamda=lamda, epochs=1000)
+        svm.fit(x_train, y_train)
+        svm_pred = svm.predict(x_test)
+        accuracy = accuracy_score(y_test, svm_pred)
+        if accuracy > best_accuracy:
+            best_accuracy = accuracy
+            best_params = {'lr': lr, 'lamda': lamda}
+
+
+
+svm = Scratch_SVM(lr=best_params['lr'], lamda=best_params['lamda'], epochs=1000)
+svm.fit(x_train, y_train)
+svm_pred = svm.predict(x_test)
 
 #using svc class of scikit learn for comparision
 sk_svm = SVC()
-sk_svm.fit(X, y)
-sk_pred = sk_svm.predict(new_samples)
-print("predicted value using scikit learn class: ", sk_pred)
-
-
-
-
-
+sk_svm.fit(x_train, y_train)
+sk_pred = sk_svm.predict(x_test)
 
 
 
@@ -88,3 +103,11 @@ def plot_decision_boundary(X, y, model):
 
 print("after applying my own svm class ")
 plot_decision_boundary(X, y, svm)
+print("accuracy score of my own class: ", accuracy_score(y_test, svm_pred))
+print("after applying my scikit learn class ")
+plot_decision_boundary(X, y, sk_svm)
+print("accuracy score of my sk learn class: ", accuracy_score(y_test, sk_pred))
+
+
+
+

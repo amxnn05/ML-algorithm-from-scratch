@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt
+
+# used for comparision of the own class vs sklearn class
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
@@ -50,12 +52,12 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 # visualization of the dataset
 
-print("data visualization")
-plt.scatter(X[:, 0], X[:, 1], c=y, cmap="bwr")
-plt.xlabel("Sepal Length")
-plt.ylabel("Sepal Width")
-plt.title("Iris Dataset")
-plt.show()
+#print("data visualization")
+#plt.scatter(X[:, 0], X[:, 1], c=y, cmap="bwr")
+#plt.xlabel("Sepal Length")
+#plt.ylabel("Sepal Width")
+#plt.title("Iris Dataset")
+#plt.show()
 
 
 # Hyperparameter tuning for Scratch_SVM
@@ -86,25 +88,25 @@ sk_pred = sk_svm.predict(x_test)
 
 
 ## plotting purpose -- copied b/c its boring part :)
-def plot_decision_boundary(X, y, model):
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap="bwr")
-    ax = plt.gca()
-    xlim = ax.get_xlim()
-    ylim = ax.get_ylim()
+#def plot_decision_boundary(X, y, model):
+#   plt.scatter(X[:, 0], X[:, 1], c=y, cmap="bwr")
+#    ax = plt.gca()
+#    xlim = ax.get_xlim()
+#    ylim = ax.get_ylim()
+#
+#    xx, yy = np.meshgrid(
+#        np.linspace(xlim[0], xlim[1], 50), np.linspace(ylim[0], ylim[1], 50)
+#    )
+#    xy = np.vstack([xx.ravel(), yy.ravel()]).T
+#    Z = model.predict(xy).reshape(xx.shape)
+#
+#    ax.contourf(xx, yy, Z, alpha=0.3, cmap="bwr")
+#    plt.show()
 
-    xx, yy = np.meshgrid(
-        np.linspace(xlim[0], xlim[1], 50), np.linspace(ylim[0], ylim[1], 50)
-    )
-    xy = np.vstack([xx.ravel(), yy.ravel()]).T
-    Z = model.predict(xy).reshape(xx.shape)
 
-    ax.contourf(xx, yy, Z, alpha=0.3, cmap="bwr")
-    plt.show()
-
-
-print("after applying my own svm class ")
-plot_decision_boundary(X, y, svm)
+#print("after applying my own svm class ")
+#plot_decision_boundary(X, y, svm)
 print("accuracy score of my own class: ", accuracy_score(y_test, svm_pred))
-print("after applying my scikit learn class ")
-plot_decision_boundary(X, y, sk_svm)
+#print("after applying my scikit learn class ")
+#plot_decision_boundary(X, y, sk_svm)
 print("accuracy score of my sk learn class: ", accuracy_score(y_test, sk_pred))

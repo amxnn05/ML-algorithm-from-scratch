@@ -13,6 +13,7 @@ class Scratch_SVM:
         self.lr = lr
         self.lamda = lamda
         self.epochs = epochs
+        
         self.m = None
         self.b = 0
 

@@ -29,7 +29,7 @@ This repository contains implementations of popular **Machine Learning algorithm
 - [ ] Linear Regression
 - [ ] Logistic Regression
 - [x] Support Vector Machine (SVM)
-- [ ] K-Nearest Neighbors (KNN)
+- [x] K-Nearest Neighbors (KNN)
 - [ ] Decision Tree
 - [ ] Random Forest *(coming soon)*
 - [ ] Naive Bayes *(coming soon)*

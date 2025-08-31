@@ -62,7 +62,7 @@ pip install -r requirements.txt
 Each algorithm comes with:
 - Code implementation 
 - Comparision with Scikit-learn & many other known libraries
-- Training on a real world dataset
+- Training on a real world dataset (when applicable)
 - Visualization (when applicable)
 
 ---

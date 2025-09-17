@@ -1,1 +1,1 @@
-from model import Scratch_SVM
+from SVM import Scratch_SVM

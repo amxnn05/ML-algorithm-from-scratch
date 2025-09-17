@@ -1,1 +1,1 @@
-from model import KNN
+from KNN import knn

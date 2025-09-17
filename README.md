@@ -23,6 +23,7 @@ This repository contains implementations of popular **Machine Learning algorithm
 
 > **Note:** The libraries like Scikit-learn and more are only used for comparision purposes.
 
+> **Note:** Maybe you will see some model build with scikit-learn , and it means implementation will update soon..
 ---
 
 ## 📂 Algorithms Implemented
@@ -62,7 +63,6 @@ pip install -r requirements.txt
 Each algorithm comes with:
 - Code implementation 
 - Comparision with Scikit-learn & many other known libraries
-- Training on a real world dataset (when applicable)
 - Visualization (when applicable)
 
 ---
